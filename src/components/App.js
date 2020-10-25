@@ -7,7 +7,7 @@ class App extends Component {
     this.state = {
       renderBall: false, //variable needed to be changed
       posi: 0,
-      ballPosition: { left: "0px" }
+      ballPosition: { left: "0px", right: "0px" }
     };
     this.renderChoice = this.renderChoice.bind(this);
     this.buttonClickHandler = this.buttonClickHandler.bind(this);
@@ -33,12 +33,19 @@ class App extends Component {
       if (event.keyCode === 39) {
         const value = this.state.posi + 5;
         // console.log(5);
-        this.setState({ ballPosition: { left: value + "px" }, posi: value });
+        this.setState({
+          ballPosition: { left: value + "px", right: "0px" },
+          posi: value
+        });
       }
       if (event.keyCode === 37) {
-        const value = this.state.posi - 5;
+        const value = this.state.posi + 5;
+        const value1 = this.state.posi - 5;
         // console.log(5);
-        this.setState({ ballPosition: { left: value + "px" }, posi: value });
+        this.setState({
+          ballPosition: { left: value1 + "px", right: value + "px" },
+          posi: value
+        });
       }
     });
   }
