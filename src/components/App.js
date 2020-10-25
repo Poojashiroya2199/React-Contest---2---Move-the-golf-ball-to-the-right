@@ -35,6 +35,11 @@ class App extends Component {
         // console.log(5);
         this.setState({ ballPosition: { left: value + "px" }, posi: value });
       }
+      if (event.keyCode === 37) {
+        const value = this.state.posi - 5;
+        // console.log(5);
+        this.setState({ ballPosition: { left: value + "px" }, posi: value });
+      }
     });
   }
 
