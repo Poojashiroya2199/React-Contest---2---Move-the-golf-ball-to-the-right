@@ -11,8 +11,19 @@ class App extends Component {
     };
     this.renderChoice = this.renderChoice.bind(this);
     this.buttonClickHandler = this.buttonClickHandler.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
   //call back function
+  handleKeyDown(event) {
+    if (event.keyCode === 39) {
+      const value = this.state.posi + 5;
+      // console.log(5);
+      this.setState({
+        ballPosition: { left: value + "px" },
+        posi: value
+      });
+    }
+  }
   buttonClickHandler() {
     this.setState({ renderBall: true });
   }
@@ -28,17 +39,7 @@ class App extends Component {
   //bind ArrowRight keydown event
 
   componentDidMount() {
-    window.addEventListener("keydown", (event) => {
-      //   console.log(this.state);
-      if (event.keyCode === 39) {
-        const value = this.state.posi + 5;
-        // console.log(5);
-        this.setState({
-          ballPosition: { left: value + "px" },
-          posi: value
-        });
-      }
-    });
+    document.addEventListener("keydown", this.handleKeyDown);
   }
 
   render() {
